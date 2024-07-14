@@ -89,3 +89,4 @@ class TestOrderPage:
         order_done = WebDriverWait(driver, 3).until(EC.visibility_of_element_located
                                                        ((AboutRentLocators.TEXT_ORDER_DONE))).text
         assert 'Заказ оформлен' in order_done
+

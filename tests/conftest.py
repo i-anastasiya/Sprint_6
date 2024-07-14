@@ -10,6 +10,7 @@ def driver():
     yield browser
     browser.quit()
 
+
 @pytest.fixture
 def open_questions_about_importan(driver):
     driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")

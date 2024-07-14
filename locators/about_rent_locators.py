@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
+
 class AboutRentLocators:
     # Заголовок на странице с информацией об аренде Про аренду"
     TEXT_ABOUT_RENT = (By.XPATH, "//div[text()='Про аренду']")
