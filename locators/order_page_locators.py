@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 
 
-
 class OrderLocators:
     # Заголовок на странице оформления заказа с текстом "Для кого самокат"
     ORDER_TITTLE = (By.XPATH, ".//div[text()='Для кого самокат']")

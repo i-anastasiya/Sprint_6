@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 
+
 class MainLocators:
     # Первый вопрос
     QUESTION_1 = (By.XPATH, ".//div[text()='Сколько это стоит? И как оплатить?']")

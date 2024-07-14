@@ -126,7 +126,6 @@ class TestQuestionsPage:
                                                                             ((MainLocators.ANSWER_7))).text
         assert answer_text == answer
 
-
     @pytest.mark.parametrize(
         'questions, answer',
         [

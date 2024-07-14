@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 
+
 # инициализируем драйвер браузера
 driver = webdriver.Firefox()
 
