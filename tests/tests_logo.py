@@ -30,4 +30,3 @@ class TestLogoPage:
         text_main = WebDriverWait(driver, 3).until(EC.visibility_of_element_located
                                                 ((MainLocators.TEXT_MAIN_PAGE))).text
         assert 'Привезём его прямо к вашей двери' in text_main
-
