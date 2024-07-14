@@ -1,0 +1,1 @@
+# allure.report - http://192.168.0.22:51834/index.html#suites/e387fa4bb326b54ea8c19c2822aba374
