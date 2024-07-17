@@ -1,32 +1,33 @@
-import time
-
 import allure
+from page_objects.main_page import MainPage
 from locators.main_page_locators import MainLocators
 from locators.order_page_locators import OrderLocators
-from locators.base_page_locators import BaseLocators
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
+from tests.constants import Constants
+from selenium.webdriver.support import expected_conditions as EC, expected_conditions
 
 
 class TestLogoPage:
 
-    @allure.step('logo_yandex')
+    @allure.description('Проверяем тап на лого Яндекс')
     def test_logo_yandex(self, driver):
-        # тест проверяет тап на лого Яндекс
-        driver.find_element(*BaseLocators.LOGO_YANDEX).click()
-        time.sleep(3)
-        driver.switch_to.window(driver.window_handles[1])
-        assert driver.current_url == 'https://dzen.ru/?yredirect=true'
+        self.driver = driver
+        MainPage.click_logo(self)
+        MainPage.wait_new_window(self)
+        self.current_url = self.driver.current_url
+        WebDriverWait(driver, 6).until(expected_conditions.url_contains('https://dzen.ru/'))
+        url_new_page = driver.current_url
+        assert url_new_page == Constants.dzen_url
 
-    @allure.step('logo_scooter')
+    @allure.description('Проверяем тап на лого Скутер')
     def test_logo_scooter(self, driver):
-        driver.find_element(*MainLocators.ORDER_BUTTON_UP).click()
+        self.driver = driver
+        MainPage.tap_order_up(self)
         # Ожидаем открытие экрана авторизации и проверяем, что именно он открылся
         tittle = WebDriverWait(driver, 3).until(EC.visibility_of_element_located
                                                 ((OrderLocators.ORDER_TITTLE))).text
         assert tittle == 'Для кого самокат'
-        driver.find_element(*BaseLocators.LOGO_SCOOTER).click()
+        MainPage.tap_logo(self)
         text_main = WebDriverWait(driver, 3).until(EC.visibility_of_element_located
                                                 ((MainLocators.TEXT_MAIN_PAGE))).text
         assert 'Привезём его прямо к вашей двери' in text_main
